@@ -1,0 +1,5 @@
+name = Site Web Services
+description = "To setup site web services"
+core = 7.x
+package = Custom
+dependencies[] = services

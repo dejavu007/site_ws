@@ -1,0 +1,37 @@
+<?php
+
+/**
+ * Implementation of hook_services_resources()
+ */
+function site_ws_services_resources() {
+	$resources = array(
+	  'all-articles' => array(
+      'index' => array(
+        'help' => t('Web services for all article content'),
+        'file' => array(
+          'type' => 'inc',
+          'module' => 'site_ws',
+          'name' => 'resources/all_articles.resource'
+        ),
+        'callback' => '_site_ws_all_articles',
+        'access callback' => '_site_ws_services_access',
+        'args' => array(
+          array(
+            'name' => 'nid',
+            'optional' => TRUE,
+            'type' => 'int',
+            'source' => array('path' => 0),
+            'description' => 'The nid of the article node'
+          ),
+        ),
+      ),
+	  ),
+	);
+
+	return $resources;
+}
+
+
+function _site_ws_services_access() {
+  return TRUE;
+}
